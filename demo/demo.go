@@ -4,9 +4,9 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	n "github.com/julian102/school_ner"
 	"log"
 	"os"
-	n "school_ner"
 	"strings"
 )
 
@@ -14,9 +14,11 @@ var mode = flag.String("mode", "suggest", "suggest/recognize")
 var aliasPath = flag.String("alias_path", "school_alias.dict", "path to school alias")
 var schoolPath = flag.String("school_path", "school_post.dict", "path to schools")
 
+const dictPath = "./demo/"
+
 func main() {
 	flag.Parse()
-	if err := n.Initialize(*schoolPath, *aliasPath); err != nil {
+	if err := n.Initialize(dictPath+*schoolPath, dictPath+*aliasPath); err != nil {
 		log.Fatalf("Error in initialize, %v", err)
 	}
 

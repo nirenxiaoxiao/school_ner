@@ -14,12 +14,10 @@ type SchoolInfo struct {
 	Level int32
 }
 
-const dictPath = "./demo/"
-
 func loadSchoolDict(path string) (ret *t.Trie, postInd map[string][]*SchoolInfo, reterr error) {
 	ret = t.NewTrie()
 	postInd = make(map[string][]*SchoolInfo)
-	f, reterr := os.Open(dictPath + path)
+	f, reterr := os.Open(path)
 	if reterr != nil {
 		return
 	}
@@ -63,7 +61,7 @@ func loadSchoolDict(path string) (ret *t.Trie, postInd map[string][]*SchoolInfo,
 
 func loadSchoolAliasDict(path string) (ret *r.Tree, reterr error) {
 	ret = r.New()
-	f, reterr := os.Open(dictPath + path)
+	f, reterr := os.Open(path)
 	if reterr != nil {
 		return
 	}
